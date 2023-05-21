@@ -7,6 +7,7 @@ readme = "README.md"
 packages = [{include = "nikestore_theft"}]
 
 [tool.poetry.dependencies]
+python = "^3.11.3"
 sqlalchemy = "^2.0.15"
 alembic = "^1.11.1"
 flake8 = "^6.0.0"
@@ -14,11 +15,10 @@ yapf = "^0.33.0"
 toml = "^0.10.2"
 fastapi = "^0.95.2"
 uvicorn = {extras = ["standard"], version = "^0.22.0"}
-pydantic = {extras = ["dotenv"], version = "^1.10.7"}
+pydantic = {extras = ["dotenv", "email"], version = "^1.10.7"}
 mako = "^1.2.4"
 
 
 [build-system]
 requires = ["poetry-core"]
-preferred_python = ["3.11"]
 build-backend = "poetry.core.masonry.api"
