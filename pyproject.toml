@@ -2,12 +2,11 @@
 name = "nikestore-theft"
 version = "0.1.0"
 description = "A toyproject"
-authors = ["Jaeyong Park <pjy101102@gmail.com>"]
+authors = ["Jaeyong Park <pjy101102@gmail.com>", "Onee Shin <scwon376@gamil.com>"]
 readme = "README.md"
 packages = [{include = "nikestore_theft"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
 sqlalchemy = "^2.0.15"
 alembic = "^1.11.1"
 flake8 = "^6.0.0"
@@ -21,4 +20,5 @@ mako = "^1.2.4"
 
 [build-system]
 requires = ["poetry-core"]
+preferred_python = ["3.11"]
 build-backend = "poetry.core.masonry.api"
