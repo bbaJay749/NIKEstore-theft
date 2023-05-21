@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "nikestore-theft"
+version = "0.1.0"
+description = "A toyproject"
+authors = ["Jaeyong Park <pjy101102@gmail.com>"]
+readme = "README.md"
+packages = [{include = "nikestore_theft"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+sqlalchemy = "^2.0.15"
+alembic = "^1.11.1"
+flake8 = "^6.0.0"
+yapf = "^0.33.0"
+toml = "^0.10.2"
+fastapi = "^0.95.2"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+pydantic = {extras = ["dotenv"], version = "^1.10.7"}
+mako = "^1.2.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
