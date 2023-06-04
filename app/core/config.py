@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         raise ValueError(v)
 
     SQLALCHEMY_DATABASE_URI: Optional[str] = "sqlite:///migration/NIKEstore.db"
-    FIRST_SUPERUSER: EmailStr = "NIKEadmin@nikestore.com"
+    #FIRST_SUPERUSER: EmailStr = "NIKEadmin@nikestore.com"
 
     class Config:
         case_sensitive = True
