@@ -5,7 +5,7 @@ from sqlalchemy import BLOB
 
 
 class ItemBase(BaseModel):
-    item_id: str
+    id: str
     category: Optional[str]
     quantity: int = 0
 
@@ -19,7 +19,7 @@ class ItemCreate(ItemBase):
     class Config:
         schema_extra = {
             "example": {
-                "item_id": "DD1391-100",
+                "id": "DD1391-100",
                 "category": "Shoes",
                 "quantity": 1,
                 "callname": "덩크 로우 범고래",
@@ -28,11 +28,6 @@ class ItemCreate(ItemBase):
                 "image_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fhypebeast.kr%2F2022%2F3%2Fnike-dunk-low-black-official-release-info&psig=AOvVaw1ac7rjz-I-UwN6H8pasuuE&ust=1686558150092000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCJCy8ezkuv8CFQAAAAAdAAAAABAE"
             }
         }
-
-
-class ItemCreateResponse(ItemCreate):
-    class Config:
-        orm_mode = True,
 
 
 class ItemUpdate(ItemBase):
