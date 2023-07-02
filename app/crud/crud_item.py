@@ -11,14 +11,13 @@ from app.schemas.item import (ItemBase, ItemCreate,
 
 class CRUDItem(CRUDBase[ItemBase, ItemCreate, ItemUpdate]):
 
-    def update(self, db: Session, *, db_obj: Item, obj_in: Union[ItemUpdate,
-                                                                 Dict[str, Any]]) -> Item:
-        if isinstance(obj_in, dict):
-            update_data = obj_in
-        else:
-            update_data = obj_in.dict(exclude_unset=True)
+    def temp(self, db: Session, *, db_obj: Item, obj_in: Union[ItemUpdate, Dict[str, Any]]) -> Item:
+        # if isinstance(obj_in, dict):
+        #     update_data = obj_in
+        # else:
+        #     update_data = obj_in.dict(exclude_unset=True)
 
-        return super().update(db, db_obj=db_obj, obj_in=update_data)
+        return super().update(db, db_obj=db_obj, obj_in=obj_in)
 
 
 item = CRUDItem(Item)

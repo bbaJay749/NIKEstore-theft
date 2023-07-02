@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app import crud
 from app.api import deps
-from app.schemas.item import ItemCreate, ItemInDBBase
+from app.schemas.item import ItemCreate, ItemInDBBase, ItemUpdate
 
 router = APIRouter()
 
@@ -34,6 +34,23 @@ def create_item(*, item_in: ItemCreate,
         )
 
     result = crud.item.create(db=db, obj_in=item_in)
+
+    return ItemInDBBase.from_orm(result)
+
+
+@router.patch("/{item_id}", status_code=201, response_model=ItemInDBBase)
+def update_item(*, item_in: ItemUpdate,
+                db: Session = Depends(deps.get_db)) -> ItemInDBBase:
+    """
+    Update a item.
+    """
+    update_target_item = crud.item.get(db=db, id=item_in.id)
+    if not update_target_item:
+        raise HTTPException(
+            status_code=404, detail=f"Item with ID {item_in.id} not exists"
+        )
+
+    result = crud.item.update(db=db, db_obj=update_target_item, obj_in=item_in)
 
     return ItemInDBBase.from_orm(result)
 
