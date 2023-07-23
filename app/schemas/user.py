@@ -1,32 +1,18 @@
 from typing import Optional
-
 from pydantic import BaseModel, EmailStr
 
-
 class UserBase(BaseModel):
+    user_id: Optional[str]
     first_name: Optional[str]
-    surname: Optional[str]
-    email: Optional[EmailStr] = None
+    last_name: Optional[str]
     is_superuser: bool = False
 
 
 # Properties to receive via API on creation
 class UserCreate(UserBase):
     email: EmailStr
-
+    pwd: str
 
 # Properties to receive via API on update
-class UserUpdate(UserBase):
-    ...
-
-
-class UserInDBBase(UserBase):
-    id: Optional[int] = None
-
-    class Config:
-        orm_mode = True
-
-
-# Additional properties to return via API
-class User(UserInDBBase):
-    pass
+class UserUpdate(UserCreate):
+    wish_list: Optional[str]
